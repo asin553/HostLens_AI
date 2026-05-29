@@ -224,7 +224,8 @@ bin/kafka-server-start.sh config/server.properties
 docker run -it -p 8080:8080 -e DYNAMIC_CONFIG_ENABLED=true provectuslabs/kafka-ui
 ```
 
-**2. Start Spark Connect server**
+**2. Start Spark Connect server**  
+
 In order for Spark Structured Streaming to be able to consume messages from Kakfa topic & to also write to Neo4j, we first need to make sure we have the correct JAR placed in Spark's classpath for the checkpoint location. In this case we are using GCS:
 
 ```
