@@ -30,7 +30,7 @@ As a developer, I wanted to build something that would streamline this process o
 ### Prerequisites
 - **Python 3.1x**
 - **Docker Engine** (Running on a highly available server)
-- **Selenium WebDriver** (MS Edge browser used)
+- **Selenium WebDriver** (MS Edge used)
 - **Apache Airflow** (Astro CLI used) 
 - **Apache Kafka** 
 - **Apache Spark** (w/ Spark Connect + Structured Streaming)
@@ -173,32 +173,22 @@ NEO4J_URI = "NEO4J_URI"  # e.g. neo4j+s://your-instance.databases.neo4j.io
 NEO4J_USERNAME = "NEO4J_USERNAME"  
 NEO4J_PASSWORD = "NEO4J_PASSWORD"
 NEO4J_DATABASE = "NEO4J_DATABASE"
-
-KAFKA_BROKER = "KAFKA_BROKER"  # e.g. localhost:9092
-KAFKA_TOPIC = "KAFKA_TOPIC"
-CHECKPOINT_PATH = "CHECKPOINT_PATH"  # e.g. s3a://{bucket}/{directory}
-
-WEB_DRIVER_PATH = "WEB_DRIVER_PATH"
-WEB_URL = "WEB_URL"  # e.g. https://www.airbnb.com/airbnb-friendly
 ```
 
 Similarly, in our Astro project we can just use the ```.env``` file to manage the environment variables.
 
 **Airflow Environment Variables**
 ```
-EDGE_DRIVER_URL=http://selenium-edge:4444
-AIRBNB_URL=https://www.airbnb.com/airbnb-friendly
+EDGE_DRIVER_URL=EDGE_DRIVER_URL # e.g. http://localhost:4444
+WEB_URL=WEB_URL  # e.g. https://www.airbnb.com/airbnb-friendly
 
-# ===== Kafka Configuration =====
-KAFKA_BROKER=KAFKA_BROKER
+KAFKA_BROKER=KAFKA_BROKER # e.g. localhost:9092
 KAFKA_TOPIC=KAFKA_TOPIC
-CHECKPOINT_LOCATION=CHECKPOINT_PATH  # e.g. gs://{bucket}/{directory}
+CHECKPOINT_LOCATION=CHECKPOINT_LOCATION  # e.g. gs://{bucket}/{directory}
 
-# ===== Neo4j Configuration =====
 NEO4J_URI=NEO4J_URI  # e.g. neo4j+s://your-instance.databases.neo4j.io
 NEO4J_USERNAME=NEO4J_USERNAME  
 NEO4J_PASSWORD=NEO4J_PASSWORD
-NEO4J_DATABASE=NEO4J_DATABASE
 ```
 
 
@@ -251,17 +241,17 @@ astro dev init
 astro dev start
 ```
 
-**2. Start GraphQL API**
+**4. Start GraphQL API**
 ```bash
 python -m api.main
 ```
 
-**3. Start Streamlit App**
+**5. Start Streamlit App**
 ```bash
 streamlit run chat/bot.py
 ```
 
-**4. Start MLflow**
+**6. Start MLflow**
 ```bash
 mlflow ui
 ```
@@ -272,7 +262,7 @@ mlflow ui
 ### Extract
 We first need to decide on a data scheduler that will periodically, in this case daily, scrape our target Airbnb web page to make sure we are getting the most recent data for our GraphRAG application. For this demo we are just using an inherent Python scheduler which uses CRON-based expressions to achieve our goal. One also has the option to use modern tools like Airflow, Dagster, Prefect or Mage. 
 
-We now need to focus on the scraping of data from the Airbnb Friendly webpage. Before moving one, one needs to [download](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver) the latest driver compatible with the local Edge installation. Again, Chrome or Firefox can be used here instead.
+We now need to focus on the scraping of data from the Airbnb Friendly webpage. Before moving one, one needs to [pull](https://hub.docker.com/r/selenium/standalone-edge) the latest driver compatible with the local Edge installation. Again, Chrome or Firefox can be used here instead.
 
 Here, it is crucial to keep in mind the 'Developer Tools' that help us inspect the HTML page with DOM elements presented as a tree structure of interconnected nodes. Below is a quick demo detailing that specific elements could look like on a specific citys' listings:
 
