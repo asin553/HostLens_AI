@@ -221,7 +221,7 @@ bin/kafka-server-start.sh config/server.properties
 
 # Terminal 3: Start Kafka UI (Docker)
 # To monitor Kafka topic and its produced messages, we will use the pre-built Docker image to run Apache Kafka UI:
-docker run -it -p 8080:8080 -e DYNAMIC_CONFIG_ENABLED=true provectuslabs/kafka-ui
+docker run -it -p 8080:8081 -e DYNAMIC_CONFIG_ENABLED=true provectuslabs/kafka-ui
 ```
 
 **2. Start Spark Connect server**  
