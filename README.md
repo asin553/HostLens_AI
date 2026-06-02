@@ -28,12 +28,12 @@ As a developer, I wanted to build something that would streamline this process o
 ## Quick Start
 
 ### Prerequisites
-- **Python 3.1x**
+- **Python 3.11+**
 - **Docker Engine** (Running on a highly available server)
 - **Selenium WebDriver** (MS Edge used)
-- **Apache Airflow** (Astro CLI used) 
+- **Apache Airflow 3** (Astro CLI used) 
 - **Apache Kafka** 
-- **Apache Spark** (w/ Spark Connect + Structured Streaming)
+- **Apache Spark 3.4+** (w/ Spark Connect + Structured Streaming)
 - **Neo4j Instance** (AuraDB managed cloud service used)
 - **Strawberry GraphQL** (via FastAPI & Apollo Sandbox)
 - **MLflow**
