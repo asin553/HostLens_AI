@@ -1,9 +1,5 @@
 # HostLens AI
 
-<p align="center">
-  <img width="700" height="300" alt="image" src="https://github.com/user-attachments/assets/a4ebde31-49bb-4a81-a128-77525e5c758d" />
-</p>
-
 Welcome to a walkthrough detailing the steps to develop an interactive AI assistant powered by a real-time data streaming pipeline, a graph-based storage engine, as well as a conversational AI agent -- **all in Python!**
 
 Yes, that's right, the ETL layer to extract the data, the API & data layer to model the relational data, the backend ReAct agent equipped with different tools & the UI chat interface are all built following Pythonic standards.
@@ -415,6 +411,6 @@ We can enable tracing for our application to visualize the data flow with [MLflo
 
 ## Future Considerations
 
-As this project keeps growing, we look to enhance the Streamlit app with cosmetic changes and eventually deploy to its Community Cloud so users can interact with it over the Internet. This would also require hosting the GraphQL server publicly with either AWS AppSync or Neo4j AuraDB's Data API service.
+As this project keeps growing, we look to enhance the Streamlit app with cosmetic changes and eventually deploy to its Community Cloud so users can interact with it over the Internet. This would also require hosting the GraphQL server publicly with either AWS AppSync or Neo4j AuraDB's Data API service. There is now also an option to used Neo4j's managed Aura Agent service to host this agent via an MCP endpoint!
 
 Stay tuned for updates!
